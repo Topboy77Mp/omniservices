@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Utilisateur OMNISERVISE - Mode d'emploi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .container-main {
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+        .card-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .card-header-custom {
+            background: linear-gradient(135deg, #0052a3 0%, #0d6efd 100%);
+            color: white;
+            padding: 25px;
+            border: none;
+        }
+        .card-header-custom h2 {
+            margin: 0;
+            font-weight: bold;
+        }
+        .card-body-custom {
+            padding: 30px;
+        }
+        .section-title {
+            color: #0052a3;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #f28b00;
+            padding-bottom: 15px;
+        }
+        .step-box {
+            background: #f8f9fa;
+            border-left: 4px solid #f28b00;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .step-box:hover {
+            background: #fff5f5;
+            box-shadow: 0 2px 8px rgba(242, 139, 0, 0.2);
+        }
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #0052a3 0%, #0d6efd 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .feature-card h5 {
+            margin-bottom: 10px;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        .checklist li:before {
+            content: "✅";
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        .faq-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #0052a3;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #0052a3;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .faq-question:hover {
+            color: #f28b00;
+        }
+        .faq-icon {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        .faq-answer {
+            color: #666;
+            display: none;
+            margin-top: 10px;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #f28b00 0%, #ff9f2c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .contact-box h4 {
+            margin-bottom: 15px;
+        }
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .nav-link-btn {
+            display: inline-block;
+            background: #0052a3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-link-btn:hover {
+            background: #f28b00;
+            color: white;
+        }
+        .badge-custom {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
+        <div class="container-main">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shopping-bag text-primary me-2"></i>
+                <strong>OMNISERVISE</strong> - Guide Utilisateur
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Boutique</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-main">
+        <!-- Welcome Section -->
+        <div class="card-section">
+            <div class="card-header-custom">
+                <h2>🎉 Bienvenue chez OMNISERVISE!</h2>
+                <p class="mb-0 mt-2 opacity-75">Guide complet pour naviguer et utiliser notre plateforme</p>
+            </div>
+            <div class="card-body-custom">
+                <p class="lead">Nous sommes heureux de vous accueillir sur OMNISERVISE, votre boutique de confiance à Lomé, Togo! 
+                Ce guide vous aidera à naviguer sur notre site et à tirer le meilleur parti de votre expérience d'achat.</p>
+                <p><strong>📍 Localisation:</strong> Rue de la Paix, Lomé, Togo 🇹🇬</p>
+                <p><strong>📞 Support Client:</strong> (+228) 90 12 34 56</p>
+                <p><strong>📧 Email:</strong> info@omniservise.tg</p>
+            </div>
+        </div>
+
+        <!-- Fonctionnalités Principales -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-star me-2"></i>Nos Fonctionnalités Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h5>Boutique Complète</h5>
+                        <p>18+ produits de qualité</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-images"></i>
+                        <h5>Galerie Interactive</h5>
+                        <p>Visualisez tous les produits</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h5>100% Français</h5>
+                        <p>Interface en français</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <h5>Tarifs XOF</h5>
+                        <p>Devise Togo (FCFA)</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h5>Responsive Design</h5>
+                        <p>Fonctionne sur tous appareils</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h5>Support 24/7</h5>
+                        <p>Contactez-nous anytime</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guide de Navigation -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-map me-2"></i>Guide de Navigation</h2>
+                
+                <div class="step-box">
+                    <span class="step-number">1</span>
+                    <h5 style="display: inline; color: #0052a3;">Accueil (index.html)</h5>
+                    <p class="mt-2 mb-0">Page d'accueil avec les produits featured, nos offres spéciales, 
+                    et les informations sur OMNISERVISE.</p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">2</span>
+                    <h5 style="display: inline; color: #0052a3;">Boutique (shop.html)</h5>
+                    <p class="mt-2 mb-0">Parcourez tous nos 18 produits de beauté et soins avec images réelles, 
+                    descriptions détaillées et prix en XOF.</p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">3</span>
+                    <h5 style="display: inline; color: #0052a3;">Produit Détaillé (single.html)</h5>
+                    <p class="mt-2 mb-0">Consultez les détails complets d'un produit, lisez les avis clients, 
+                    et sélectionnez la quantité à ajouter au panier.</p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">4</span>
+                    <h5 style="display: inline; color: #0052a3;">Panier (cart.html)</h5>
+                    <p class="mt-2 mb-0">Vérifiez vos articles, ajustez les quantités, et procédez au paiement.</p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">5</span>
+                    <h5 style="display: inline; color: #0052a3;">Paiement (cheackout.html)</h5>
+                    <p class="mt-2 mb-0">Finalisez votre commande en entrant vos informations de livraison et de paiement.</p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">6</span>
+                    <h5 style="display: inline; color: #0052a3;">Galerie (GALERIE_PRODUITS.html)</h5>
+                    <p class="mt-2 mb-0">Découvrez tous nos produits dans une galerie interactive organisée par catégories.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Utiliser -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-question-circle me-2"></i>Comment Utiliser le Site</h2>
+                
+                <h4>🔍 Rechercher un Produit</h4>
+                <ul class="checklist">
+                    <li>Utilisez la barre de recherche en haut de chaque page</li>
+                    <li>Filtrez par catégorie (Beauté, Parfums, Soins, etc.)</li>
+                    <li>Cliquez sur un produit pour voir ses détails</li>
+                </ul>
+
+                <h4 class="mt-4">🛒 Ajouter au Panier</h4>
+                <ul class="checklist">
+                    <li>Cliquez sur le bouton "Ajouter au Panier"</li>
+                    <li>Sélectionnez la quantité souhaitée</li>
+                    <li>Confirmez l'ajout au panier</li>
+                </ul>
+
+                <h4 class="mt-4">💳 Finaliser l'Achat</h4>
+                <ul class="checklist">
+                    <li>Allez dans "Mon Panier"</li>
+                    <li>Vérifiez vos articles et quantités</li>
+                    <li>Cliquez sur "Procéder au Paiement"</li>
+                    <li>Entrez vos informations de livraison</li>
+                    <li>Choisissez votre méthode de paiement</li>
+                    <li>Confirmez votre commande</li>
+                </ul>
+
+                <h4 class="mt-4">⭐ Laisser un Avis</h4>
+                <ul class="checklist">
+                    <li>Allez sur la page du produit (single.html)</li>
+                    <li>Scrollez jusqu'à "Laisser un Avis"</li>
+                    <li>Remplissez le formulaire avec votre nom, email et commentaire</li>
+                    <li>Évaluez le produit (1 à 5 étoiles)</li>
+                    <li>Cliquez sur "Publier Avis"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-comments me-2"></i>Questions Fréquemment Posées (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-icon">❓</span>
+                        Quel est le délai de livraison?
+                    </div>
+                    <div class="faq-answer">
+                        Nous offrons une livraison gratuite à partir de 500 000 XOF. 
+                        Les délais de livraison varient de 1 à 3 jours ouvrables à Lomé.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-icon">❓</span>
+                        Comment puis-je payer?
+                    </div>
+                    <div class="faq-answer">
+                        Nous acceptons les paiements en XOF (Franc CFA), EUR (Euro), et USD (Dollar). 
+                        Les modalités de paiement seront détaillées au moment du checkout.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-icon">❓</span>
+                        Puis-je retourner un produit?
+                    </div>
+                    <div class="faq-answer">
+                        Oui! Vous pouvez retourner un produit dans les 14 jours suivant la réception. 
+                        Veuillez contacter notre service clientèle pour les détails.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-icon">❓</span>
+                        Où sont basés vos produits?
+                    </div>
+                    <div class="faq-answer">
+                        OMNISERVISE est basé à Lomé, Togo. Tous nos produits sont sélectionnés pour leur qualité 
+                        et adaptés au marché togolais.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span class="faq-icon">❓</span>
+                        Comment me contacter pour plus d'informations?
+                    </div>
+                    <div class="faq-answer">
+                        Vous pouvez nous contacter par:
+                        <br>📞 Téléphone: (+228) 90 12 34 56
+                        <br>📧 Email: info@omniservise.tg
+                        <br>📍 Adresse: Rue de la Paix, Lomé, Togo
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-phone me-2"></i>Nous Contacter</h2>
+                <div class="contact-box">
+                    <h4>📞 Appelez-nous:</h4>
+                    <p style="font-size: 1.3rem; margin-bottom: 20px;">
+                        <a href="tel:+22890123456">(+228) 90 12 34 56</a>
+                    </p>
+                    <h4>📧 Envoyez-nous un email:</h4>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        <a href="mailto:info@omniservise.tg">info@omniservise.tg</a>
+                    </p>
+                    <h4>📍 Visitez-nous:</h4>
+                    <p>Rue de la Paix, Lomé, Togo 🇹🇬<br>Lundi à Vendredi: 08h-17h (GMT+0)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="card-section">
+            <div class="card-body-custom">
+                <h2 class="section-title"><i class="fas fa-compass me-2"></i>Navigation Rapide</h2>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link-btn"><i class="fas fa-home me-2"></i>Accueil</a>
+                    <a href="shop.html" class="nav-link-btn"><i class="fas fa-shopping-bag me-2"></i>Boutique</a>
+                    <a href="single.html" class="nav-link-btn"><i class="fas fa-box me-2"></i>Produit Détail</a>
+                    <a href="GALERIE_PRODUITS.html" class="nav-link-btn"><i class="fas fa-images me-2"></i>Galerie</a>
+                    <a href="cart.html" class="nav-link-btn"><i class="fas fa-shopping-cart me-2"></i>Panier</a>
+                    <a href="contact.html" class="nav-link-btn"><i class="fas fa-envelope me-2"></i>Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; color: white; margin-top: 40px; padding: 20px;">
+            <p><strong>OMNISERVISE</strong> © 2025 - Tous droits réservés</p>
+            <p>Votre partenaire de confiance à Lomé, Togo 🇹🇬</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Fermer tous les autres
+            allAnswers.forEach(a => {
+                if (a !== answer) a.classList.remove('show');
+            });
+            
+            // Toggle le courant
+            answer.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

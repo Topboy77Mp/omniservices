@@ -1,0 +1,101 @@
+{
+  "name": "OMNISERVISE - Services et Produits à Lomé, Togo",
+  "short_name": "OMNISERVISE",
+  "description": "Votre partenaire de confiance pour tous vos services et produits à Lomé, Togo",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0052a3",
+  "lang": "fr-FR",
+  
+  "icons": [
+    {
+      "src": "/img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/img/screenshot-540x720.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/img/screenshot-1280x720.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  
+  "categories": [
+    "shopping",
+    "business"
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Boutique",
+      "short_name": "Boutique",
+      "description": "Accédez rapidement à notre boutique",
+      "url": "/shop.html",
+      "icons": [
+        {
+          "src": "/img/shortcut-shop-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Nous Contacter",
+      "short_name": "Contact",
+      "description": "Contactez-nous directement",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "/img/shortcut-contact-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  
+  "prefer_related_applications": false,
+  
+  "related_applications": []
+}

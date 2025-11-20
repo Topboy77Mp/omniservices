@@ -1,0 +1,133 @@
+# OMNISERVISE - Configuration Apache
+# Optimisation serveur et sécurité
+
+# Activer le mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Redirection HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Supprimer www
+    RewriteCond %{HTTP_HOST} ^www\.
+    RewriteRule ^(.*)$ https://%{HTTP_HOST:www.}%{REQUEST_URI} [L,R=301]
+    
+    # URLs propres
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.html [L]
+</IfModule>
+
+# Compression gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml+rss
+    AddEncoding gzip .js .css .xml .html .json
+</IfModule>
+
+# Caching navigateur
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Fichiers images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # Fichiers CSS et JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # Fichiers fonts
+    ExpiresByType application/font-ttf "access plus 1 year"
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+    ExpiresByType application/x-font-opentype "access plus 1 year"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    ExpiresByType application/x-font-woff2 "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    ExpiresByType font/opentype "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    
+    # Fichiers HTML
+    ExpiresByType text/html "access plus 30 days"
+    
+    # Défaut
+    ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# En-têtes de sécurité
+<IfModule mod_headers.c>
+    # Empêcher le clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Empêcher le MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Activer la protection XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Politique de sécurité du contenu
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net ajax.googleapis.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' fonts.gstatic.com cdn.jsdelivr.net;"
+    
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Feature Policy
+    Header always set Permissions-Policy "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+</IfModule>
+
+# Interdire l'accès aux fichiers sensibles
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(env|json|php|sql|htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquer l'accès à des dossiers
+<Directory /config>
+    Order allow,deny
+    Deny from all
+</Directory>
+
+<Directory /private>
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# Désactiver l'indexage de répertoires
+Options -Indexes
+
+# Ajouter types MIME
+<IfModule mod_mime.c>
+    AddType application/json .json
+    AddType application/javascript .js
+    AddType text/javascript .js
+    AddType image/svg+xml .svg
+    AddType application/x-font-woff .woff
+    AddType application/x-font-woff2 .woff2
+    AddType application/octet-stream .woff .woff2
+</IfModule>
+
+# Timeout et limites
+<IfModule mod_fcgid.c>
+    FcgidIOTimeout 3600
+    FcgidConnectTimeout 3600
+</IfModule>
+
+# PHP (si utilisé)
+<IfModule mod_php.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>

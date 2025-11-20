@@ -1,0 +1,18 @@
+robots.txt User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Crawler spécifiques
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://www.omniservise.tg/sitemap.xml
+
+# Délai de requête (en secondes)
+Crawl-delay: 1

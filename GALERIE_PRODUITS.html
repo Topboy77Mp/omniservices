@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Produits - OMNISERVISE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #0052a3 0%, #0d6efd 100%);
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .container-galerie {
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        header h1 {
+            color: #0052a3;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            color: #f28b00;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .categorie-section {
+            margin-bottom: 50px;
+        }
+        
+        .categorie-title {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #0052a3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .categorie-title h2 {
+            color: #0052a3;
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .categorie-title i {
+            margin-right: 10px;
+            color: #f28b00;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 82, 163, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #f4f4f4;
+        }
+        
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background: #0052a3;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+        
+        .product-name {
+            color: #0052a3;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .product-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+        
+        .badge-nouveau {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-populaire {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .badge-promotion {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .badge-tendance {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .product-prix {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .prix-reduit {
+            color: #f28b00;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .prix-original {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 0.95rem;
+        }
+        
+        .reduction {
+            background: #dc3545;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .stats-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #0052a3 0%, #0d6efd 100%);
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-galerie" style="max-width: 1200px;">
+        <!-- Header -->
+        <header>
+            <h1>🛍️ OMNISERVISE - Galerie de Produits</h1>
+            <p>18 Produits Sélectionnés | Images Réelles | Lomé, Togo 🇹🇬</p>
+        </header>
+        
+        <!-- Statistiques -->
+        <div class="stats-box">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Produits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Catégories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Images</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Français</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TÉLÉPHONES -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-mobile-alt"></i> Téléphones (2)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 1 -->
+                <div class="product-card">
+                    <img src="photo/parfum.webp" alt="Téléphone Premium Ultra 5G" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-populaire">Populaire</span>
+                        <div class="product-category">Téléphones</div>
+                        <div class="product-name">Téléphone Premium Ultra 5G</div>
+                        <div class="product-desc">Performance maximale avec écran AMOLED</div>
+                        <div class="product-prix">
+                            <span class="prix-original">850 000 XOF</span>
+                            <span class="prix-reduit">650 000 XOF</span>
+                            <span class="reduction">-23%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="product-card">
+                    <img src="photo/shampoint.webp" alt="Téléphone Intelligent Pro Max" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-promotion">Promotion</span>
+                        <div class="product-category">Téléphones</div>
+                        <div class="product-name">Téléphone Intelligent Pro Max</div>
+                        <div class="product-desc">Caméra 200MP et batterie ultra longue durée</div>
+                        <div class="product-prix">
+                            <span class="prix-original">750 000 XOF</span>
+                            <span class="prix-reduit">550 000 XOF</span>
+                            <span class="reduction">-27%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TABLETTES -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-tablet-alt"></i> Tablettes (2)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 3 -->
+                <div class="product-card">
+                    <img src="photo/crème.webp" alt="Tablette Numérique Pro 12"" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-tendance">Tendance</span>
+                        <div class="product-category">Tablettes</div>
+                        <div class="product-name">Tablette Numérique Pro 12"</div>
+                        <div class="product-desc">Écran 2K pour productivité optimale</div>
+                        <div class="product-prix">
+                            <span class="prix-original">950 000 XOF</span>
+                            <span class="prix-reduit">750 000 XOF</span>
+                            <span class="reduction">-21%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 14 -->
+                <div class="product-card">
+                    <img src="photo/huilelavande.webp" alt="Tablette Graphique Professional" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-tendance">Tendance</span>
+                        <div class="product-category">Tablettes</div>
+                        <div class="product-name">Tablette Graphique Professional</div>
+                        <div class="product-desc">Pour les designers et illustrateurs</div>
+                        <div class="product-prix">
+                            <span class="prix-original">500 000 XOF</span>
+                            <span class="prix-reduit">380 000 XOF</span>
+                            <span class="reduction">-24%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ORDINATEURS -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-laptop"></i> Ordinateurs (4)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 4 -->
+                <div class="product-card">
+                    <img src="photo/deodorant.webp" alt="Ordinateur Portable i7 Ultralite" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-nouveau">Nouveau</span>
+                        <div class="product-category">Ordinateurs</div>
+                        <div class="product-name">Ordinateur Portable i7 Ultralite</div>
+                        <div class="product-desc">Seulement 1.2kg, puissance complète</div>
+                        <div class="product-prix">
+                            <span class="prix-original">1 500 000 XOF</span>
+                            <span class="prix-reduit">1 200 000 XOF</span>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 5 -->
+                <div class="product-card">
+                    <img src="photo/geldouche.webp" alt="Ordinateur Bureau Gaming Edition" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-promotion">Promotion</span>
+                        <div class="product-category">Ordinateurs</div>
+                        <div class="product-name">Ordinateur Bureau Gaming Edition</div>
+                        <div class="product-desc">RTX 4080, processeur dernière génération</div>
+                        <div class="product-prix">
+                            <span class="prix-original">2 000 000 XOF</span>
+                            <span class="prix-reduit">1 600 000 XOF</span>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 15 -->
+                <div class="product-card">
+                    <img src="photo/beaume miel.webp" alt="Clavier Mécanique RGB Gaming" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-promotion">Promotion</span>
+                        <div class="product-category">Ordinateurs</div>
+                        <div class="product-name">Clavier Mécanique RGB Gaming</div>
+                        <div class="product-desc">Switches mécaniques premium, RGB customisable</div>
+                        <div class="product-prix">
+                            <span class="prix-original">120 000 XOF</span>
+                            <span class="prix-reduit">85 000 XOF</span>
+                            <span class="reduction">-29%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 16 -->
+                <div class="product-card">
+                    <img src="photo/pommade-skin.webp" alt="Souris Sans Fil Précision Pro" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-populaire">Populaire</span>
+                        <div class="product-category">Ordinateurs</div>
+                        <div class="product-name">Souris Sans Fil Précision Pro</div>
+                        <div class="product-desc">DPI réglable, batterie longue durée</div>
+                        <div class="product-prix">
+                            <span class="prix-original">55 000 XOF</span>
+                            <span class="prix-reduit">40 000 XOF</span>
+                            <span class="reduction">-27%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ACCESSOIRES -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-headphones-alt"></i> Accessoires (5)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 6 -->
+                <div class="product-card">
+                    <img src="photo/eau_parfum.webp" alt="Écouteurs Sans Fil Premium Sound" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-populaire">Populaire</span>
+                        <div class="product-category">Accessoires</div>
+                        <div class="product-name">Écouteurs Sans Fil Premium Sound</div>
+                        <div class="product-desc">Isolation du bruit, autonomie 48h</div>
+                        <div class="product-prix">
+                            <span class="prix-original">85 000 XOF</span>
+                            <span class="prix-reduit">65 000 XOF</span>
+                            <span class="reduction">-24%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 7 -->
+                <div class="product-card">
+                    <img src="photo/lavemains.jpg" alt="Chargeur Rapide Universel 65W" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-tendance">Tendance</span>
+                        <div class="product-category">Accessoires</div>
+                        <div class="product-name">Chargeur Rapide Universel 65W</div>
+                        <div class="product-desc">Compatible tous téléphones, 30min 80%</div>
+                        <div class="product-prix">
+                            <span class="prix-original">35 000 XOF</span>
+                            <span class="prix-reduit">25 000 XOF</span>
+                            <span class="reduction">-29%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 8 -->
+                <div class="product-card">
+                    <img src="photo/savon.webp" alt="Câble USB-C Premium Nylon" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-nouveau">Nouveau</span>
+                        <div class="product-category">Accessoires</div>
+                        <div class="product-name">Câble USB-C Premium Nylon</div>
+                        <div class="product-desc">Renforcé, durable, 2 mètres</div>
+                        <div class="product-prix">
+                            <span class="prix-original">18 000 XOF</span>
+                            <span class="prix-reduit">12 000 XOF</span>
+                            <span class="reduction">-33%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 12 -->
+                <div class="product-card">
+                    <img src="photo/fond-teint.webp" alt="Protecteur d'Écran Verre Trempé" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-promotion">Promotion</span>
+                        <div class="product-category">Accessoires</div>
+                        <div class="product-name">Protecteur d'Écran Verre Trempé</div>
+                        <div class="product-desc">Dureté 9H, pose facile, anti-traces</div>
+                        <div class="product-prix">
+                            <span class="prix-original">15 000 XOF</span>
+                            <span class="prix-reduit">10 000 XOF</span>
+                            <span class="reduction">-33%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 13 -->
+                <div class="product-card">
+                    <img src="photo/rouge-levre.webp" alt="Coque Protective Premium Design" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-nouveau">Nouveau</span>
+                        <div class="product-category">Accessoires</div>
+                        <div class="product-name">Coque Protective Premium Design</div>
+                        <div class="product-desc">Antichoc, design élégant, plusieurs coloris</div>
+                        <div class="product-prix">
+                            <span class="prix-original">28 000 XOF</span>
+                            <span class="prix-reduit">20 000 XOF</span>
+                            <span class="reduction">-29%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RÉPARATION -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-tools"></i> Réparation & Remplacement (3)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 9 -->
+                <div class="product-card">
+                    <img src="photo/gel.webp" alt="Batterie de Rechange Haute Capacité" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-promotion">Promotion</span>
+                        <div class="product-category">Réparation</div>
+                        <div class="product-name">Batterie de Rechange Haute Capacité</div>
+                        <div class="product-desc">5000mAh, garantie 12 mois</div>
+                        <div class="product-prix">
+                            <span class="prix-original">42 000 XOF</span>
+                            <span class="prix-reduit">32 000 XOF</span>
+                            <span class="reduction">-24%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 10 -->
+                <div class="product-card">
+                    <img src="photo/masque-terre.webp" alt="Écran de Remplacement Haute Définition" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-nouveau">Nouveau</span>
+                        <div class="product-category">Réparation</div>
+                        <div class="product-name">Écran de Remplacement Haute Définition</div>
+                        <div class="product-desc">Installation professionnelle offerte</div>
+                        <div class="product-prix">
+                            <span class="prix-original">125 000 XOF</span>
+                            <span class="prix-reduit">95 000 XOF</span>
+                            <span class="reduction">-24%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 17 -->
+                <div class="product-card">
+                    <img src="photo/selde bain.webp" alt="Joint d'Étanchéité Résistant" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-nouveau">Nouveau</span>
+                        <div class="product-category">Réparation</div>
+                        <div class="product-name">Joint d'Étanchéité Résistant</div>
+                        <div class="product-desc">Résistant à l'eau et l'humidité</div>
+                        <div class="product-prix">
+                            <span class="prix-original">8 000 XOF</span>
+                            <span class="prix-reduit">5 500 XOF</span>
+                            <span class="reduction">-31%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SERVICES -->
+        <div class="categorie-section">
+            <div class="categorie-title">
+                <h2><i class="fas fa-wrench"></i> Services (2)</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Produit 11 -->
+                <div class="product-card">
+                    <img src="photo/maskara.webp" alt="Nettoyage et Maintenance Complète" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-populaire">Populaire</span>
+                        <div class="product-category">Services</div>
+                        <div class="product-name">Nettoyage et Maintenance Complète</div>
+                        <div class="product-desc">Diagnostic + Nettoyage + Optimisation</div>
+                        <div class="product-prix">
+                            <span class="prix-original">50 000 XOF</span>
+                            <span class="prix-reduit">35 000 XOF</span>
+                            <span class="reduction">-30%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produit 18 -->
+                <div class="product-card">
+                    <img src="photo/élixir de la nuit.jpg" alt="Diagnostic Technique Complet" class="product-image">
+                    <div class="product-info">
+                        <span class="product-badge badge-tendance">Tendance</span>
+                        <div class="product-category">Services</div>
+                        <div class="product-name">Diagnostic Technique Complet</div>
+                        <div class="product-desc">Analyse détaillée + Rapport écrit</div>
+                        <div class="product-prix">
+                            <span class="prix-original">25 000 XOF</span>
+                            <span class="prix-reduit">15 000 XOF</span>
+                            <span class="reduction">-40%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <h3 style="color: #0052a3; margin-bottom: 15px;">📍 OMNISERVISE</h3>
+            <p><strong>Rue de la Paix, Lomé, Togo</strong></p>
+            <p><strong>Téléphone:</strong> (+228) 90 12 34 56</p>
+            <p><strong>Email:</strong> info@omniservise.tg</p>
+            <p style="margin-top: 20px; color: #f28b00;"><strong>Heures: Lun-Ven 08h-17h GMT+0</strong></p>
+            <p style="margin-top: 15px; color: #999; font-size: 0.9rem;">© 2025 OMNISERVISE. Tous droits réservés. | Livraison gratuite à partir de 500 000 XOF</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

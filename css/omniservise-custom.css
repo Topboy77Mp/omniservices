@@ -1,0 +1,562 @@
+/* ====================================
+   OMNISERVISE - Styles Personnalisés
+   Couleurs et Branding Personnalisés
+   ==================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #f28b00;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --togo-green: #1d5a3d;
+    --togo-yellow: #fcd116;
+    --omni-blue: #0052a3;
+    --omni-orange: #f28b00;
+}
+
+/* ====================================
+   LOGO ET BRANDING
+   ==================================== */
+
+.navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-brand h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* ====================================
+   EN-TÊTE ET NAVIGATION
+   ==================================== */
+
+.nav-bar {
+    background: linear-gradient(135deg, var(--omni-blue) 0%, var(--primary-color) 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar.sticky-top {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+/* ====================================
+   TOPBAR
+   ==================================== */
+
+.topbar a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.topbar a:hover {
+    color: var(--primary-color);
+}
+
+/* ====================================
+   CARROUSEL
+   ==================================== */
+
+.header-carousel {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+}
+
+.carousel-content h1 {
+    color: var(--dark-color);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-content h4 {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.carousel-banner {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.carousel-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ====================================
+   SERVICES
+   ==================================== */
+
+.p-4 {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.p-4:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.p-4 i {
+    color: var(--secondary-color);
+}
+
+.p-4 h6 {
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.p-4 p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ====================================
+   OFFRES PRODUITS
+   ==================================== */
+
+.products-offer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--omni-blue) 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.products-offer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.products-offer h3 {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.products-offer h1 {
+    color: white;
+    font-weight: 700;
+}
+
+/* ====================================
+   PRODUITS
+   ==================================== */
+
+.product-item-inner {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.product-item-inner:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.product-new,
+.product-sale {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.product-details {
+    background: var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-item-inner:hover .product-details {
+    opacity: 1;
+}
+
+.product-details a i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* ====================================
+   BOUTONS
+   ==================================== */
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--omni-blue) 100%);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--omni-blue) 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: darken(var(--secondary-color), 10%);
+    transform: translateY(-2px);
+}
+
+.btn-primary.rounded-pill {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* ====================================
+   ONGLETS
+   ==================================== */
+
+.nav-pills .nav-link {
+    background-color: #e9ecef;
+    color: var(--dark-color);
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+.nav-pills .nav-link.active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--omni-blue) 100%);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ====================================
+   FOOTER
+   ==================================== */
+
+.footer {
+    background: linear-gradient(135deg, var(--dark-color) 0%, #2d3436 100%);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer .rounded {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.footer .rounded:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer .rounded-circle {
+    background: var(--secondary-color) !important;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.footer h4 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--secondary-color);
+}
+
+.copyright {
+    background: var(--dark-color);
+    color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* ====================================
+   FORMULAIRE DE CONTACT
+   ==================================== */
+
+.form-control,
+.form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+}
+
+/* ====================================
+   ANIMATIONS
+   ==================================== */
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.wow {
+    animation-name: slideInUp;
+    animation-duration: 0.8s;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+@media (max-width: 992px) {
+    .navbar-brand h1 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .product-item {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand h1 {
+        font-size: 1.3rem;
+    }
+    
+    .carousel-content {
+        padding: 1rem !important;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .footer .row {
+        row-gap: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand h1 {
+        font-size: 1.1rem;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-content h4 {
+        font-size: 0.85rem;
+    }
+    
+    .btn-primary.rounded-pill {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .footer h4 {
+        font-size: 1rem;
+    }
+}
+
+/* ====================================
+   UTILITAIRES
+   ==================================== */
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.border-secondary {
+    border-color: var(--secondary-color) !important;
+}
+
+/* ====================================
+   PANIER ET PAIEMENT
+   ==================================== */
+
+.cart-item {
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f9f9f9;
+}
+
+.cart-item .btn {
+    margin-left: 0.5rem;
+}
+
+/* ====================================
+   PAGE 404
+   ==================================== */
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+}
+
+.error-page h1 {
+    font-size: 6rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.error-page p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* ====================================
+   RETOUR AU HAUT
+   ==================================== */
+
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.back-to-top:hover {
+    background: darken(var(--secondary-color), 10%);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top.show {
+    display: flex !important;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "omniservise-ecommerce",
+  "version": "1.0.0",
+  "description": "OMNISERVISE - Plateforme e-commerce avec 41 produits en 7 catégories",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "omniservise",
+    "beauty",
+    "parfums",
+    "products"
+  ],
+  "author": "OMNISERVISE",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
