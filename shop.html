@@ -2842,6 +2842,165 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+<!-- WhatsApp Widget Flottant -->
+<div id="whatsapp-widget" class="whatsapp-widget">
+    <a href="https://wa.me/22892651234?text=Bonjour%20OMNISERVISE%2C%20je%20souhaite%20connaitre%20plus%20d%27informations%20sur%20vos%20produits" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-button"
+       title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Chat</span>
+    </a>
+    <div class="whatsapp-tooltip">Besoin d'aide? Contactez-nous sur WhatsApp!</div>
+</div>
+
+<style>
+/* WhatsApp Widget Styles */
+.whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #25D366, #20BA5E);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    font-size: 28px;
+    border: 3px solid white;
+    position: relative;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+    width: 150px;
+    border-radius: 50px;
+    padding-right: 10px;
+}
+
+.whatsapp-button:hover .whatsapp-text {
+    display: inline;
+}
+
+.whatsapp-text {
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.whatsapp-button:active {
+    transform: scale(0.95);
+}
+
+/* Tooltip */
+.whatsapp-tooltip {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.whatsapp-widget:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: 80px;
+}
+
+/* Animation pulsante */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8);
+    }
+}
+
+.whatsapp-button {
+    animation: slideIn 0.5s ease-in-out, pulse 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .whatsapp-widget {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .whatsapp-button:hover {
+        width: 130px;
+    }
+
+    .whatsapp-tooltip {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-widget {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .whatsapp-button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .whatsapp-button:hover {
+        width: 120px;
+    }
+}
+
+/* Mode Sombre Optionnel */
+@media (prefers-color-scheme: dark) {
+    .whatsapp-tooltip {
+        background: #555;
+    }
+}
+</style>
+
 </body>
 
 </html>
